@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2473012-Kenneth Hansel</title>
+    <style type="text/css">
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 16px;
+        }
+
+        /* Bullet kotak ungu/pink */
+        ul.list-utama {
+            list-style-image: url('img/sqpurple.gif');
+        }
+
+        /* Bullet kotak oranye */
+        ul.list-sub {
+            list-style-image: url('img/sqorange.gif');
+        }
+
+        /* --- Level 3: Tanpa bullet --- */
+        ul.list-detail {
+            list-style-image: none;
+            list-style-type: none; /* Menghilangkan bentuk bullet bawaan */
+            padding-left: 20px; /* Menyesuaikan jarak indentasi agar sejajar */
+        }
+        
+        /* Memberikan garis bawah khusus untuk item di level 3 */
+        ul.list-detail li {
+            text-decoration: underline; 
+        }
+
+        /* --- Styling Text Khusus --- */
+        .teks-oranye {
+            color: #ff8c00; /* Memberi warna oranye pada teks */
+        }
+    </style>
+</head>
+<body>
+
+    <ul class="list-utama">
+        <li>Coffee</li>
+        <li>Tea
+            <ul class="list-sub">
+                <li><span class="teks-oranye">Cold Tea</span>
+                    <ul class="list-detail">
+                        <li>Jasmine</li>
+                        <li>Green</li>
+                    </ul>
+                </li>
+                <li><span class="teks-oranye">Hot Tea</span></li>
+            </ul>
+        </li>
+        <li>Coca Cola</li>
+    </ul>
+
+</body>
+</html>
