@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473012-Kenneth Hansel</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        table {
+            border: 1px solid black;
+            border-spacing: 3px;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 8px 12px;
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="tempat-tabel"></div>
+
+    <script>
+        var inputUser;
+
+        // Looping Akan terus muncul sampai user memasukkan angka
+        do {
+            inputUser = prompt("A number?");
+        } while (inputUser === null || inputUser.trim() === "" || isNaN(inputUser));
+
+        // 2. Ubah input menjadi format Integer
+        var angka = parseInt(inputUser);
+
+        // 3. Siapin struktur HTML untuk Tabel
+        var kodeTabel = "<table>";
+
+        // 4. Looping untuk membuat 8 baris perkalian
+        for (var i = 1; i <= 8; i++) {
+            kodeTabel += "<tr>";
+            kodeTabel += "<td>" + i + "</td>";
+            kodeTabel += "<td>x</td>";
+            kodeTabel += "<td>" + angka + "</td>";
+            kodeTabel += "<td>=</td>";
+            kodeTabel += "<td>" + (i * angka) + "</td>";
+            kodeTabel += "</tr>";
+        }
+
+        kodeTabel += "</table>";
+
+        // 5. Tampilkan tabel ke layar
+        document.getElementById("tempat-tabel").innerHTML = kodeTabel;
+
+    </script>
+
+</body>
+
+</html>

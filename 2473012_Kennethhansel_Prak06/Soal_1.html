@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473012-Kenneth Hansel</title>
+    <style>
+        .bagian-input {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: inline-block;
+            width: 130px;
+        }
+
+        input {
+            margin-left: 10px;
+            padding: 2px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 15px;
+
+        }
+
+        td {
+            border: 2px solid black;
+            width: 60px;
+            height: 45px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bagian-input">
+        <label>Angka Pertama</label>: <input type="text" id="angka1">
+    </div>
+    <div class="bagian-input">
+        <label>Angka Kedua</label>: <input type="text" id="angka2">
+    </div>
+
+    <button onclick="hitung()">Count</button>
+
+    <br>
+    <table>
+        <tr>
+            <td id="t1_a"></td>
+            <td>+</td>
+            <td id="t1_b"></td>
+            <td>=</td>
+            <td id="t1_hasil"></td>
+        </tr>
+        <tr>
+            <td id="t2_a"></td>
+            <td>-</td>
+            <td id="t2_b"></td>
+            <td>=</td>
+            <td id="t2_hasil"></td>
+        </tr>
+    </table>
+
+    <script>
+        function hitung() {
+            var input1 = document.getElementById("angka1").value;
+            var input2 = document.getElementById("angka2").value;
+
+            if (input1 === "" || input2 === "") {
+                alert("Mohon isi kedua angka terlebih dahulu.");
+                return;
+            }
+
+            if (isNaN(input1) && isNaN(input2)) {
+                alert("angka pertama dan kedua harus angka.");
+                return;
+            } else if (isNaN(input1)) {
+                alert("angka pertama bukan angka.");
+                return;
+            } else if (isNaN(input2)) {
+                alert("angka kedua harus angka.");
+                return;
+            }
+
+            var n1 = parseInt(input1);
+            var n2 = parseInt(input2);
+
+            // Baris Penjumlahan
+            document.getElementById("t1_a").innerHTML = n1;
+            document.getElementById("t1_b").innerHTML = n2;
+            document.getElementById("t1_hasil").innerHTML = n1 + n2;
+
+            // Baris Pengurangan
+            document.getElementById("t2_a").innerHTML = n1;
+            document.getElementById("t2_b").innerHTML = n2;
+            document.getElementById("t2_hasil").innerHTML = n1 - n2;
+        }
+    </script>
+
+</body>
+
+</html>
