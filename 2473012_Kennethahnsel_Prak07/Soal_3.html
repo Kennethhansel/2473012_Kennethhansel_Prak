@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473012-Kenneth Hansel</title>
+    <style>
+        .wadah {
+            border: 3px solid #8a8a8a;
+            padding: 10px;
+            display: inline-block;
+            background-color: #ffffff;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        .teks-label {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 22px;
+        }
+
+        input[type="text"] {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 3px;
+            width: 170px;
+            border: 1px solid #a9a9a9;
+        }
+
+        button {
+            padding: 3px 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        select {
+            padding: 3px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wadah">
+        <table>
+            <tr>
+                <td class="teks-label">Data</td>
+                <td><input type="text" id="inputData"></td>
+            </tr>
+            <tr>
+                <td><button onclick="tambahData()">Add</button></td>
+                <td>
+                    <select id="pilihanOperasi" onchange="jalankanOperasi()">
+                        <option value="">Pilih Operasi</option>
+                        <option value="display">Display</option>
+                        <option value="count">Count</option>
+                        <option value="sum">Sum</option>
+                        <option value="average">Average</option>
+                        <option value="max">Max</option>
+                        <option value="min">Min</option>
+                        <option value="ganjil">Ganjil</option>
+                        <option value="genap">Genap</option>
+                        <option value="hapus">Hapus</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="teks-label">Hasil</td>
+                <td><input type="text" id="hasilAkhir" readonly></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // Variabel global untuk simpen
+        var kumpulanAngka = [];
+
+        function tambahData() {
+            var elemenInput = document.getElementById("inputData");
+            var angkaBaru = parseInt(elemenInput.value);
+
+            // Untuk cek apakah yang diinput bener angka
+            if (!isNaN(angkaBaru)) {
+                // Add angka ke array
+                kumpulanAngka.push(angkaBaru);
+            }
+
+            // Delete ketika add biar bisa input baru
+            elemenInput.value = "";
+            elemenInput.focus();
+        }
+
+        function jalankanOperasi() {
+            var operasi = document.getElementById("pilihanOperasi").value;
+            var kotakHasil = document.getElementById("hasilAkhir");
+            var teksHasil = "";
+
+            // Logika IF untuk membandingkan value dari option yang dipilih
+            if (operasi === "display") {
+                teksHasil = kumpulanAngka.join(", ");
+            }
+            else if (operasi === "count") {
+                teksHasil = kumpulanAngka.length;
+            }
+            else if (operasi === "sum") {
+                var total = 0;
+                for (var i = 0; i < kumpulanAngka.length; i++) {
+                    total += kumpulanAngka[i];
+                }
+                teksHasil = total;
+            }
+            else if (operasi === "average") {
+                if (kumpulanAngka.length > 0) {
+                    var total = 0;
+                    for (var i = 0; i < kumpulanAngka.length; i++) {
+                        total += kumpulanAngka[i];
+                    }
+                    teksHasil = total / kumpulanAngka.length;
+                } else {
+                    teksHasil = 0;
+                }
+            }
+            else if (operasi === "max") {
+                // MAX
+                if (kumpulanAngka.length > 0) {
+                    teksHasil = Math.max(...kumpulanAngka);
+                }
+            }
+            else if (operasi === "min") {
+                // MIN
+                if (kumpulanAngka.length > 0) {
+                    teksHasil = Math.min(...kumpulanAngka);
+                }
+            }
+            else if (operasi === "ganjil") {
+                var arrGanjil = [];
+                for (var i = 0; i < kumpulanAngka.length; i++) {
+                    // Modulo 2 tidak sama dengan 0 berarti ganjil
+                    if (kumpulanAngka[i] % 2 !== 0) {
+                        arrGanjil.push(kumpulanAngka[i]);
+                    }
+                }
+                teksHasil = arrGanjil.join(", ");
+            }
+            else if (operasi === "genap") {
+                var arrGenap = [];
+                for (var i = 0; i < kumpulanAngka.length; i++) {
+                    // Modulo 2 sama dengan 0 berarti genap
+                    if (kumpulanAngka[i] % 2 === 0) {
+                        arrGenap.push(kumpulanAngka[i]);
+                    }
+                }
+                teksHasil = arrGenap.join(", ");
+            }
+            else if (operasi === "hapus") {
+                // Kosongin Array
+                kumpulanAngka = [];
+                document.getElementById("pilihanOperasi").value = "";
+            }
+
+            // hasil Akhir
+            kotakHasil.value = teksHasil;
+        }
+    </script>
+
+</body>
+
+</html>

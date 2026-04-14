@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473012-Kenneth Hansel</title>
+    <style>
+        .wadah {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 350px;
+            font-family: serif;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        input[type="text"].judul {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            box-sizing: border-box;
+        }
+
+        .counter {
+            text-align: right;
+        }
+
+        .counter input {
+            width: 60px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wadah">
+        <table>
+            <tr>
+                <td width="70">Judul</td>
+                <td width="10">:</td>
+                <td><input type="text" class="judul"></td>
+            </tr>
+            <tr>
+                <td>Deskripsi</td>
+                <td>:</td>
+                <td>
+                    <textarea onkeyup="call_onKeyPress(this)" onkeydown="call_onKeyPress(this)"></textarea>
+                    <div class="counter">
+                        <input type="text" id="txt2" value="0/256" readonly>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function call_onKeyPress(ob) {
+            // Menggunakan var sesuai dengan materi di kelas
+            var obval = ob.value;
+
+            if (obval.length > 256) {
+                ob.value = obval.substr(0, 256);
+                obval = ob.value;
+            }
+
+            document.getElementById("txt2").value = obval.length + "/256";
+        }
+    </script>
+
+</body>
+
+</html>
