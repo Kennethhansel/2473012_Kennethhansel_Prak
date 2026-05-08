@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473012-Kenneth Hansel</title>
+    <script src="jquery-4.0.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+        }
+
+        .wadah-tombol {
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Input dan tombol -->
+    <div class="wadah-tombol">
+        <input type="text" id="kolomKetikan">
+        <button id="tombolTambah">Add</button>
+        <button id="tombolCari">Search</button>
+    </div>
+
+    <!-- Nama -->
+    <div id="wadahDaftarNama">
+        <div>Bill Gates</div>
+        <div>John Resig</div>
+        <div>George Martin</div>
+        <div>Malcom John Sinclair</div>
+        <div>J. Ohn</div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            /* Klik Tombol Trus Nambah */
+            $("#tombolTambah").click(function () {
+                var teksBaru = $("#kolomKetikan").val();
+
+                if (teksBaru !== "") {
+                    $("<div>" + teksBaru + "</div>").appendTo("#wadahDaftarNama");
+
+                    $("#kolomKetikan").val("");
+                }
+            });
+
+            /* Klik Tombol Cari */
+            $("#tombolCari").click(function () {
+                var kataKunci = $("#kolomKetikan").val().toLowerCase();
+
+                $("#wadahDaftarNama div").css("text-decoration", "none");
+
+                if (kataKunci !== "") {
+                    /* Ngecek */
+                    $("#wadahDaftarNama div").filter(function () {
+                        return $(this).text().toLowerCase().indexOf(kataKunci) > -1;
+                    }).css("text-decoration", "underline"); // Garis Bawah */
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
